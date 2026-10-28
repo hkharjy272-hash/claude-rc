@@ -1,0 +1,146 @@
+/* دليل هوية إرث — تنسيق الصفحات
+   الخطوط والألوان هنا مؤقتة حتى اعتماد القسمين 4 و5 */
+
+@font-face { font-family: "Display"; src: url("../../../fonts/_provisional/Amiri-700.ttf"); font-weight: 700; }
+@font-face { font-family: "Display"; src: url("../../../fonts/_provisional/Amiri-400.ttf"); font-weight: 400; }
+@font-face { font-family: "Text"; src: url("../../../fonts/_provisional/NotoNaskhArabic-400.ttf"); font-weight: 400; }
+@font-face { font-family: "Text"; src: url("../../../fonts/_provisional/NotoNaskhArabic-600.ttf"); font-weight: 600; }
+
+:root {
+  --ink: #1c1a17;
+  --muted: #6b665e;
+  --rule: #cfc9bf;
+  --paper: #ffffff;
+  --panel: #f4f2ee;
+}
+
+@page { size: A4; margin: 0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: #e9e7e3; }
+
+body {
+  font-family: "Text", serif;
+  color: var(--ink);
+  direction: rtl;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: var(--paper);
+  padding: 22mm 20mm 18mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen { .page { margin: 10mm auto; box-shadow: 0 1px 6px rgba(0,0,0,.12); } }
+@media print  { html, body { background: none; } }
+
+.kicker {
+  font-size: 9.5pt;
+  color: var(--muted);
+  letter-spacing: 0;
+  display: flex;
+  gap: 3mm;
+  align-items: center;
+}
+.kicker .num { font-family: "Display"; font-weight: 700; font-size: 11pt; color: var(--ink); }
+
+h1 {
+  font-family: "Display";
+  font-weight: 700;
+  font-size: 38pt;
+  line-height: 1.5;
+  margin-top: 4mm;
+}
+
+.lede {
+  font-size: 13pt;
+  line-height: 1.9;
+  color: var(--muted);
+  max-width: 140mm;
+  margin-top: 2mm;
+}
+
+hr.rule { border: 0; border-top: 0.4pt solid var(--rule); margin: 9mm 0 7mm; }
+
+h2 {
+  font-family: "Display";
+  font-weight: 700;
+  font-size: 17pt;
+  line-height: 1.6;
+  margin-bottom: 2.5mm;
+}
+
+p { font-size: 11pt; line-height: 2.05; text-align: justify; text-justify: inter-word; }
+p + p { margin-top: 3mm; }
+
+.block + .block { margin-top: 8mm; }
+
+.statement {
+  font-family: "Display";
+  font-size: 15pt;
+  line-height: 1.95;
+  text-align: right;
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+
+.panel { background: var(--panel); padding: 7mm 8mm; }
+
+.values { list-style: none; }
+.values li {
+  display: grid;
+  grid-template-columns: 11mm 38mm 1fr;
+  align-items: baseline;
+  padding: 3mm 0;
+  border-bottom: 0.4pt solid var(--rule);
+}
+.values li:first-child { border-top: 0.4pt solid var(--rule); }
+.values .n { font-family: "Display"; font-weight: 700; font-size: 13pt; color: var(--muted); }
+.values .t { font-family: "Display"; font-weight: 700; font-size: 14pt; }
+.values .d { font-size: 10.5pt; line-height: 1.9; }
+
+table.persona { width: 100%; border-collapse: collapse; font-size: 10.5pt; }
+table.persona th {
+  font-family: "Display"; font-weight: 700; font-size: 12pt;
+  text-align: right; padding: 0 0 2mm; border-bottom: 0.8pt solid var(--ink);
+}
+table.persona td { padding: 2.6mm 0; border-bottom: 0.4pt solid var(--rule); line-height: 1.8; vertical-align: top; }
+table.persona td:first-child { width: 50%; padding-left: 6mm; }
+table.persona td.no { color: var(--muted); }
+
+.arch { display: flex; gap: 4mm; margin-top: 3mm; flex-wrap: wrap; }
+.arch span {
+  border: 0.4pt solid var(--rule);
+  padding: 1.6mm 4mm;
+  font-size: 10.5pt;
+  white-space: nowrap;
+}
+.arch span b { font-family: "Display"; font-weight: 700; font-size: 12pt; }
+.arch span.next { color: var(--muted); border-style: dashed; }
+
+.note { font-size: 9.5pt; line-height: 1.9; color: var(--muted); margin-top: 2.5mm; text-align: right; }
+
+.footer {
+  margin-top: auto;
+  padding-top: 5mm;
+  border-top: 0.4pt solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5pt;
+  color: var(--muted);
+}
+
+p.plain { text-align: right; }
+.panel p.statement { text-align: right; }
+table.persona td:first-child { width: 40%; }
+.page > .block:last-of-type { margin-bottom: 6mm; }
