@@ -1,0 +1,5 @@
+/* مقاس لوحة الدليل: ١٦٠٠ × ١٢٠٠ */
+@page { size: 1600px 1200px; margin: 0; }
+html, body { margin: 0; padding: 0; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body > div:first-child { break-after: page; }
