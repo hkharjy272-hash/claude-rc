@@ -17,7 +17,7 @@ for name in order:
     if os.path.exists(f):
         w.add_page(PdfReader(f).pages[0]); used.append(name)
 author = 'م/ أحمد درهم حسين الفقيه'
-w.add_metadata({'/Title': 'دليل هوية إرث IRTH', '/Author': author, '/Creator': author,
+w.add_metadata({'/Title': os.environ.get('PDF_TITLE', 'دليل هوية إرث IRTH'), '/Author': author, '/Creator': author,
                 '/Producer': author, '/Subject': 'إعداد وتصميم: م/ أحمد درهم حسين الفقيه — الشريك المؤسس ومدير المشروع'})
 with open(out, 'wb') as fh: w.write(fh)
 print(len(used), 'pages ->', out)
